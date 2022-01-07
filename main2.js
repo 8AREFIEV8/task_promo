@@ -1,6 +1,4 @@
 
-
-
 function promo(num1, num2, num3, num4) {
 
    let input = document.querySelector('#input');
@@ -8,31 +6,40 @@ function promo(num1, num2, num3, num4) {
    let p = document.querySelector('p');
 
 
-
-    button.addEventListener( 'click', (e) => {
+   button.addEventListener( 'click', (e) => {
     e.preventDefault();
-    // input.value = '';
+    let inputValueArr = input.value.split('');
+    let numArr = inputValueArr.map(Number);
+    input.value = ''
 
-   let inputValueArr = input.value.split('');
-        console.log(inputValueArr);
-        for (const item of inputValueArr) {
-            if (item[0] % 2 === 0) {
-                console.log('true');
-            }
+       let sumOdd = 0;
+       let sumPar = 0;
+
+       for (let i = 0; i < numArr.length; i++) {
+           if (numArr[i] % 2 === 0) {
+               sumPar += numArr[i];
+           } else {
+               sumOdd +=  numArr[i];
+           }
+           if (sumOdd > sumPar) {
+              return p.append(num1)
+           }
+
+       }
+
+
+   })
+
+    input.addEventListener('input', () => {
+        if (input.value.length == 8) {
+            button.disabled = false
         }
+    })
 
-        // p.innerText = ''
-    if (!input.value){
+        if (!input.value){
        input.style.border = '2px solid red';
-       return p.append(num4)
 
     }
-
-
-
-
-
-    })
 
 
 
