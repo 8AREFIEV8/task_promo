@@ -5,11 +5,11 @@ function promo(num1, num2, num3, num4) {
    let button  = document.querySelector('#button');
    let p = document.querySelector('p');
 
-
    button.addEventListener( 'click', (e) => {
     e.preventDefault();
     let inputValueArr = input.value.split('');
     let numArr = inputValueArr.map(Number);
+       console.log(numArr)
     input.value = ''
 
        let sumOdd = 0;
@@ -24,16 +24,22 @@ function promo(num1, num2, num3, num4) {
            if (sumOdd > sumPar) {
               return p.append(num1)
            }
-
        }
-
-
    })
 
     input.addEventListener('input', () => {
-        if (input.value.length == 8) {
+
+        if (input.value.length === 8) {
             button.disabled = false
+        }else {
+            button.disabled = true
         }
+        if (!/^[0-9]+$/.test(input.value)) {
+            button.disabled = true
+        }
+
+
+
     })
 
         if (!input.value){
